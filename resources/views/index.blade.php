@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Página inicial - App-Sistema')
+
 @section('content')
     <x-header-component/>
 
