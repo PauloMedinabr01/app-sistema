@@ -5,8 +5,13 @@
 @section('content')
     <x-header-component/>
 
-    <div class="container mt-4 text-center">
-        <h1 class="mt-4 text-center">Lista de Usuários</h1>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-sm-12 text-center d-flex justify-content-center align-items-center">
+                <h1 class="mb-2 mx-5">Lista de Usuários</h1>
+                <a href="{{ route('user-create') }}" class="btn btn-success">Novo usuário</a>
+            </div>
+        </div>
     </div>
 
     <div class="table-responsive text-center">
