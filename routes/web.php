@@ -19,6 +19,8 @@ Route::prefix('user')->group(function () {
     Route::get('/index', [UsersController::class, 'index'])->name('user-index');
     Route::get('/create', [UsersController::class, 'create'])->name('user-create');
     Route::post('/', [UsersController::class, 'store'])->name('user-store');
+    Route::get('/{id}/edit', [UsersController::class, 'edit'])->where('id', '[0-9]+')->name('user-edit');
+    Route::put('/{id}', [UsersController::class, 'update'])->where('id', '[0-9]+')->name('user-update');
 });
 
 Route::get('/', [IndexController::class, 'index']);

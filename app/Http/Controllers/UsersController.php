@@ -49,17 +49,30 @@ class UsersController extends Controller
     /**
      * Exibe o formulário para editar um usuário específico.
      */
-    public function edit(string $id)
+    public function edit(string $id): Application|Factory|View|\Illuminate\Foundation\Application
     {
-        // Lógica para exibir o formulário de edição de um usuário específico.
+        $users = User::where('id', $id)->first();
+        if (!empty($users)) {
+            return view('user.edit', ['users' => $users]);
+        } else {
+            return redirect()->route('user-index');
+        }
     }
 
     /**
      * Atualiza as informações de um usuário no banco de dados.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        // Lógica para atualizar as informações de um usuário no banco de dados.
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'status' => $request->status,
+        ];
+
+        User::where('id', $id)->update($data);
+
+        return redirect()->route('user-index');
     }
 
     /**
