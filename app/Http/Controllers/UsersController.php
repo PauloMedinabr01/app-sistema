@@ -6,64 +6,67 @@ use App\Models\User;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Exibe a lista de usuários.
      */
-    public function index(): View|\Illuminate\Foundation\Application|Factory|Application
+    public function index(): View|Application|Factory
     {
         $users = User::all();
         return view('user.user', ['users' => $users]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Armazena um novo usuário no banco de dados.
      */
-    public function create()
+    public function store(Request $request): RedirectResponse
     {
-        //
+        User::create($request->all());
+
+        return redirect()->route('user-index');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Exibe o formulário para criar um novo usuário.
      */
-    public function store(Request $request)
+    public function create(): View|Application|Factory
     {
-        //
+        return view('user.create');
     }
 
     /**
-     * Display the specified resource.
+     * Exibe os detalhes de um usuário específico.
      */
     public function show(string $id)
     {
-        //
+        // Lógica para exibir os detalhes de um usuário específico.
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Exibe o formulário para editar um usuário específico.
      */
     public function edit(string $id)
     {
-        //
+        // Lógica para exibir o formulário de edição de um usuário específico.
     }
 
     /**
-     * Update the specified resource in storage.
+     * Atualiza as informações de um usuário no banco de dados.
      */
     public function update(Request $request, string $id)
     {
-        //
+        // Lógica para atualizar as informações de um usuário no banco de dados.
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove um usuário específico do banco de dados.
      */
     public function destroy(string $id)
     {
-        //
+        // Lógica para remover um usuário específico do banco de dados.
     }
 }
