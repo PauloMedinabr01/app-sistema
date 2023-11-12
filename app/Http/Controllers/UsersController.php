@@ -52,7 +52,7 @@ class UsersController extends Controller
     public function edit(string $id): Application|Factory|View|\Illuminate\Foundation\Application
     {
         $users = User::where('id', $id)->first();
-        if (!empty($users)) {
+        if ($users) {
             return view('user.edit', ['users' => $users]);
         } else {
             return redirect()->route('user-index');
@@ -76,10 +76,21 @@ class UsersController extends Controller
     }
 
     /**
+     * Exibe o formulário para confirmar a exclusão de um usuário específico.
+     */
+    public function confirma(string $id): Application|Factory|View|\Illuminate\Foundation\Application
+    {
+        $users = User::where('id', $id)->first();
+
+        return view('user.delete', ['users' => $users]);
+    }
+
+    /**
      * Remove um usuário específico do banco de dados.
      */
-    public function destroy(string $id)
+    public function destroy(string $id): RedirectResponse
     {
-        // Lógica para remover um usuário específico do banco de dados.
+        User::where('id', $id)->delete();
+        return redirect()->route('user-index');
     }
 }

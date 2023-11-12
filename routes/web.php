@@ -17,10 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('user')->group(function () {
     Route::get('/index', [UsersController::class, 'index'])->name('user-index');
+
     Route::get('/create', [UsersController::class, 'create'])->name('user-create');
     Route::post('/', [UsersController::class, 'store'])->name('user-store');
+
     Route::get('/{id}/edit', [UsersController::class, 'edit'])->where('id', '[0-9]+')->name('user-edit');
     Route::put('/{id}', [UsersController::class, 'update'])->where('id', '[0-9]+')->name('user-update');
+
+    Route::get('/{id}/delete', [UsersController::class, 'confirma'])->where('id', '[0-9]+')->name('user-delete');
+    Route::delete('/{id}', [UsersController::class, 'destroy'])->where('id', '[0-9]+')->name('user-destroy');
 });
 
 Route::get('/', [IndexController::class, 'index']);
