@@ -36,4 +36,4 @@ jobs:
           DB_DATABASE: database/database.sqlite
         run: php artisan test
       - name: PHPStan
-        run: ./vendor/bin/phpstan analyse
+        run: ./vendor/bin/phpstan analyse app
