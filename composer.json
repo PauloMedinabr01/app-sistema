@@ -56,6 +56,9 @@
         ],
         "phpcs": [
             "phpcs --standard=PSR12 app"
+        ],
+        "phpcbf": [
+            "phpcbf --standard=PSR12 app"
         ]
     },
     "extra": {

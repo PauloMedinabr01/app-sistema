@@ -39,3 +39,5 @@ jobs:
         run: ./vendor/bin/phpstan analyse app
       - name: Codesniffer
         run: ./vendor/bin/phpcs --standard=PSR12 app
+      - name: PHPCbf
+        run: ./vendor/bin/phpcbf --standard=PSR12 app
