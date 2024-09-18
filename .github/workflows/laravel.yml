@@ -37,3 +37,5 @@ jobs:
         run: php artisan test
       - name: PHPStan
         run: ./vendor/bin/phpstan analyse app
+      - name: Codesniffer
+        run: ./vendor/bin/phpcs --standard=PSR12 app
